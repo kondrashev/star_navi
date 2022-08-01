@@ -14,8 +14,22 @@ const App = () => {
     };
     dispatch(loadModesFetchData(data));
   }, []);
-  console.log(listModes);
-  return <div className="App">Star Navi!!!</div>;
+  const toSelect = (event) => {
+    console.log(event.target.value);
+  };
+  return (
+    <div className="App">
+      <select className="selectMode" onChange={toSelect}>
+        <option defaultValue="Pick">Pick mode</option>
+        {listModes.map((item) => (
+          <option key={item.name} value={item.field}>
+            {item.name}
+          </option>
+        ))}
+      </select>
+      <button className="buttonStart">START</button>
+    </div>
+  );
 };
 
 export default App;
