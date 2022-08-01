@@ -1,6 +1,6 @@
 // @ts-nocheck
 import "./App.css";
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect, createContext, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadModesFetchData } from "./store/get_mode/action_get";
 import endpoints from "./constants/Endpoints";
@@ -13,6 +13,7 @@ const App = () => {
   const [values, setValues] = useState(context);
   const dispatch = useDispatch();
   const listModes = useSelector((state) => state.getModesReducer.modes);
+  const size = useRef(0);
   useEffect(() => {
     const data = {
       url: `${endpoints.getModes}`,
@@ -20,7 +21,10 @@ const App = () => {
     dispatch(loadModesFetchData(data));
   }, []);
   const toSelect = (event) => {
-    setValues({ ...values, sizeSquares: event.target.value });
+    size.current = event.target.value;
+  };
+  const toSelectStart = () => {
+    setValues({ ...values, sizeSquares: size.current });
   };
   return (
     <ApplictationContext.Provider
@@ -41,7 +45,9 @@ const App = () => {
               </option>
             ))}
           </select>
-          <button className="buttonStart">START</button>
+          <button className="buttonStart" onClick={toSelectStart}>
+            START
+          </button>
         </div>
         <div className="containerSquares">
           <FormSquares />
