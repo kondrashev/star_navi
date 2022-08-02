@@ -24,11 +24,11 @@ const App = () => {
   }, []);
   const toSelect = (event) => {
     positionSquare.current = [];
-    setValues({ ...values, showSquares: false });
+    setValues({ ...values, showSquares: false, showFormSquares: false });
     size.current = event.target.value;
   };
   const toSelectStart = () => {
-    setValues({ ...values, sizeSquares: size.current });
+    setValues({ ...values, sizeSquares: size.current, showFormSquares: true });
   };
   return (
     <ApplictationContext.Provider
@@ -54,7 +54,9 @@ const App = () => {
           </button>
         </div>
         <div className="containerSquares">
-          <FormSquares positionSquare={positionSquare} />
+          {values.showFormSquares && (
+            <FormSquares positionSquare={positionSquare} />
+          )}
           <StatisticsSquares positionSquare={positionSquare} />
         </div>
       </div>
