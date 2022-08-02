@@ -24,7 +24,11 @@ const Cell = (props) => {
         (item) => item !== `${row}-${col}`
       );
     }
-    setValues({ ...values, countSquares: !values.countSquares });
+    setValues({
+      ...values,
+      countSquares: !values.countSquares,
+      showSquares: Boolean(positionSquare.current.length),
+    });
   };
   return (
     <div style={styles.cell} onMouseOver={() => onChoose(row + 1, col + 1)} />
