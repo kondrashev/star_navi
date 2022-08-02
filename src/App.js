@@ -23,6 +23,8 @@ const App = () => {
     dispatch(loadModesFetchData(data));
   }, []);
   const toSelect = (event) => {
+    positionSquare.current = [];
+    setValues({ ...values, showSquares: false });
     size.current = event.target.value;
   };
   const toSelectStart = () => {

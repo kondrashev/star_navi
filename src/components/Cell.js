@@ -8,11 +8,11 @@ const Cell = (props) => {
   const [backgroundCell, setBackgroundCell] = useState(false);
   const styles = {
     cell: {
-      width: "30px",
-      height: "30px",
-      border: "0.5px solid black",
+      width: "45px",
+      height: "45px",
+      border: "0.5px solid #080808",
       cursor: "pointer",
-      backgroundColor: backgroundCell ? "blue" : "#ffffff",
+      backgroundColor: backgroundCell ? "#4BA6EE" : "#ffffff",
     },
   };
   const onChoose = (row, col) => {
