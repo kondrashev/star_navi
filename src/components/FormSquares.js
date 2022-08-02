@@ -1,12 +1,12 @@
 // @ts-nocheck
-import React, { useContext, useRef } from "react";
+import React, { useContext } from "react";
 import { ApplictationContext } from "../App";
 import Cell from "./Cell";
 
-const FormSquares = () => {
+const FormSquares = (props) => {
+  const { positionSquare } = props;
   const { values } = useContext(ApplictationContext);
   const squares = new Array(Number(values.sizeSquares)).fill("");
-  const positionSquare = useRef([]);
   const styles = {
     row: {
       width: "auto%",

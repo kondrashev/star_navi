@@ -1,8 +1,10 @@
 // @ts-nocheck
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { ApplictationContext } from "../App";
 
 const Cell = (props) => {
   const { row, col, positionSquare } = props;
+  const { values, setValues } = useContext(ApplictationContext);
   const [backgroundCell, setBackgroundCell] = useState(false);
   const styles = {
     cell: {
@@ -22,6 +24,7 @@ const Cell = (props) => {
         (item) => item !== `${row}-${col}`
       );
     }
+    setValues({ ...values, countSquares: !values.countSquares });
   };
   return (
     <div style={styles.cell} onMouseOver={() => onChoose(row + 1, col + 1)} />

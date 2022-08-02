@@ -1,4 +1,5 @@
 @import "./styles/FormSquares.css";
+@import "./styles/StatisticsSquares.css";
 
 .App {
   background-color: #ffffff;
@@ -17,7 +18,7 @@
 .containerSquares {
   padding-top: 1%;
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   align-items: center;
 }
 .selectMode {

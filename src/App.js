@@ -6,6 +6,7 @@ import { loadModesFetchData } from "./store/get_mode/action_get";
 import endpoints from "./constants/Endpoints";
 import FormSquares from "./components/FormSquares";
 import { context } from "./constants/Context";
+import StatisticsSquares from "./components/StatisticsSquares";
 
 export const ApplictationContext = createContext();
 
@@ -13,6 +14,7 @@ const App = () => {
   const [values, setValues] = useState(context);
   const dispatch = useDispatch();
   const listModes = useSelector((state) => state.getModesReducer.modes);
+  const positionSquare = useRef([]);
   const size = useRef(0);
   useEffect(() => {
     const data = {
@@ -50,7 +52,8 @@ const App = () => {
           </button>
         </div>
         <div className="containerSquares">
-          <FormSquares />
+          <FormSquares positionSquare={positionSquare} />
+          <StatisticsSquares positionSquare={positionSquare} />
         </div>
       </div>
     </ApplictationContext.Provider>
