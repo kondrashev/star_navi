@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 
 const Cell = (props) => {
+  const { row, col, positionSquare } = props;
   const [backgroundCell, setBackgroundCell] = useState(false);
   const styles = {
     cell: {
@@ -12,12 +13,19 @@ const Cell = (props) => {
       backgroundColor: backgroundCell ? "blue" : "#ffffff",
     },
   };
-  const { row, col } = props;
   const onChoose = (row, col) => {
     setBackgroundCell(!backgroundCell);
-    console.log(row + 1, col + 1);
+    if (!backgroundCell) {
+      positionSquare.current.push(`${row}-${col}`);
+    } else {
+      positionSquare.current = positionSquare.current.filter(
+        (item) => item !== `${row}-${col}`
+      );
+    }
   };
-  return <div style={styles.cell} onMouseOver={() => onChoose(row, col)} />;
+  return (
+    <div style={styles.cell} onMouseOver={() => onChoose(row + 1, col + 1)} />
+  );
 };
 
 export default Cell;

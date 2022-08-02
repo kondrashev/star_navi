@@ -1,11 +1,12 @@
 // @ts-nocheck
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { ApplictationContext } from "../App";
 import Cell from "./Cell";
 
 const FormSquares = () => {
   const { values } = useContext(ApplictationContext);
   const squares = new Array(Number(values.sizeSquares)).fill("");
+  const positionSquare = useRef([]);
   const styles = {
     row: {
       width: "auto%",
@@ -22,7 +23,12 @@ const FormSquares = () => {
         return (
           <div key={col} className="row">
             {squares.map((_, row) => (
-              <Cell key={row} row={row} col={col} />
+              <Cell
+                key={row}
+                row={row}
+                col={col}
+                positionSquare={positionSquare}
+              />
             ))}
           </div>
         );
